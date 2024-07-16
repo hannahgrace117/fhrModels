@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Babylon Template</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/babylon.ui.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+    <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylon.stlFileLoader.js"></script>
+   
+  </head>
+
+  <body>
+    
+    <div id="text-container">
+    <h1> 
+      <iframe src = "models.txt" frameborder = "0" font-size = 500px></iframe>
+    </h1>
+  </div>
+  <div id="babylon-container">
+    <canvas id="renderCanvas" touch-action="none"></canvas>
+  </div>
+  <div class="dropdown-image">
+    <h2 class="heading">Click for Bill of Material</h2>
+    <img src="bill.png" alt="Dropdown Image" class="image">
+  </div>
+    <!-- touch-action="none" for best results from PEP -->
+-
+    <script>
+ // Get the dropdown image container
+ const dropdownImage = document.querySelector('.dropdown-image');
+
+// Get the heading and image elements
+const heading = dropdownImage.querySelector('.heading');
+const image = dropdownImage.querySelector('.image');
+
+// Add an event listener to the heading
+heading.addEventListener('click', () => {
+  // Toggle the image visibility
+  image.classList.toggle('show');
+});
+      const canvas = document.getElementById("renderCanvas"); // Get the canvas element
+      const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+      
+      const scene = new BABYLON.Scene(engine);
+      const camera = new BABYLON.ArcRotateCamera("camera", -1, 1 , 4, new BABYLON.Vector3(0, 0, 0));
+
+
+      camera.attachControl(canvas, true);
+      const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0));  
+
+      scene.createDefaultEnvironment();
+
+      //load in scene via import mesh using dropbox .glb file
+       BABYLON.SceneLoader.ImportMesh("", "https://dl.dropbox.com/scl/fi/exu3lu960ca1mh9j0aegg/cc524579.babylon?rlkey=f2vle2daea0ukbnkkjif8gfxx&st=xygx4r1l&", "cc524579.babylon", scene);
+      // Register a render loop to repeatedly render the scene
+     //BABYLON.SceneLoader.ImportMesh("", "https://dl.dropbox.com/scl/fi/o0v7k67l0co9nddu97689/CC524579-Model.stl?rlkey=v7v3kwa51ks3ajd14csa7mwjo&st=th4kjkd6&", engine, scene);
+      engine.runRenderLoop(function () {
+        scene.render();
+      });
+
+      // Watch for browser/canvas resize events
+      window.addEventListener("resize", function () {
+        engine.resize();
+      });
+
+    </script>
+  </body>
+</html>
+
+<!-- make sure to switch the target file in the launch.json file before debugging!-->
