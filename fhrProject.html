@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    
+    <div id="output"></div>
     <div id="text-container">
     <h1> 
       <iframe src = "models.txt" frameborder = "0" font-size = 500px></iframe>
@@ -32,6 +32,24 @@
     <!-- touch-action="none" for best results from PEP -->
 -
     <script>
+
+
+function getQueryParams() {
+    const params = {};
+    const queryString = window.location.search.substring(1);
+    const queryArray = queryString.split('&');
+    queryArray.forEach(function(query){
+        const pair = query.split('=');
+        params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+    });
+    return params;
+}
+
+const params  = getQueryParams();
+const inputURL = params['url'] || 'no url provided'
+
+const savedURL = inputURL;
+console.log('saved url: ${savedUrl}');
  // Get the dropdown image container
  const dropdownImage = document.querySelector('.dropdown-image');
 
@@ -59,7 +77,6 @@ heading.addEventListener('click', () => {
       //load in scene via import mesh using dropbox .glb file
        BABYLON.SceneLoader.ImportMesh("", "https://dl.dropbox.com/scl/fi/exu3lu960ca1mh9j0aegg/cc524579.babylon?rlkey=f2vle2daea0ukbnkkjif8gfxx&st=xygx4r1l&", "cc524579.babylon", scene);
       // Register a render loop to repeatedly render the scene
-     //BABYLON.SceneLoader.ImportMesh("", "https://dl.dropbox.com/scl/fi/o0v7k67l0co9nddu97689/CC524579-Model.stl?rlkey=v7v3kwa51ks3ajd14csa7mwjo&st=th4kjkd6&", engine, scene);
       engine.runRenderLoop(function () {
         scene.render();
       });
