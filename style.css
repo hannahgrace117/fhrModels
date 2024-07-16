@@ -1,0 +1,88 @@
+/* style sheet */
+html {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* added a font family */
+    background-color: #f7f7f7; /* added a light gray background */
+    font-size: 50;
+  }
+  
+  #babylon-container {
+    width: 100%;
+    height: 500px;
+    background-color: #f0f0f0; /* changed to a light gray background */ 
+    margin-bottom: 20px;
+
+}
+  /*
+  #image-container {
+    width: 100%;
+    /*height: 100%; 
+    background-color: #fff; 
+    border: 1px solid #ddd; 
+    padding: 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+    */
+  
+  #renderCanvas {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /*#image-container img {
+    max-width: 600px; 
+    max-height: 100%; 
+    height: auto;
+    height: 100%; 
+    object-fit: contain;
+    border: none; 
+    margin: auto; 
+    border-radius: 10px; 
+  } */
+
+  #text-container {
+    width: 100%;
+  /*  max-width: 600px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0; */
+    background-color: #f0f0f0; 
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif; 
+    font-size: 24px;
+    text-align: center;
+  }
+
+  /* dropdown image test */
+  .dropdown-image .image {
+    display: none;
+  }
+
+  /* Style the heading */
+  .dropdown-image .heading {
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+  }
+
+  /* Style the dropdown image container */
+  .dropdown-image {
+    margin-bottom: 20px;
+  }
+
+  /* Show the image when the show class is added */
+  .dropdown-image .image.show {
+    display: block;
+  }
