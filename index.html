@@ -75,7 +75,7 @@ heading.addEventListener('click', () => {
       scene.createDefaultEnvironment();
 
       //load in scene via import mesh using dropbox .glb file
-       BABYLON.SceneLoader.ImportMesh("", "https://dl.dropbox.com/scl/fi/exu3lu960ca1mh9j0aegg/cc524579.babylon?rlkey=f2vle2daea0ukbnkkjif8gfxx&st=xygx4r1l&", "cc524579.babylon", scene);
+       BABYLON.SceneLoader.ImportMesh("", "", "cc524579.babylon", scene);
       // Register a render loop to repeatedly render the scene
       engine.runRenderLoop(function () {
         scene.render();
